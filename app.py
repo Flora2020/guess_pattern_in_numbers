@@ -65,8 +65,9 @@ class Find_pattern:
                 self.result_message = 'Sorry, I cannot recognize the pattern of the sequence.'
             else:
                 self.generate_integers(generate_next_int)
-                self.result_message += ' '.join([str(num)
-                                                for num in self.generated_integers])
+                self.result_message += ' '.join(
+                    [str(num) for num in self.generated_integers]
+                )
 
             return self.result_message
 
