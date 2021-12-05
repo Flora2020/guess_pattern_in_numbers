@@ -2,6 +2,7 @@ class Find_pattern:
     def __init__(self) -> None:
         self.error_message = {
             'not_integers': 'Error, please enter integer only.',
+            'not_enough_integer': 'Error, please enter at least two integers.',
             'not_increasing': 'Error, please enter increasing sequence.'
         }
         self.origional_integer_list = []
@@ -16,6 +17,9 @@ class Find_pattern:
             self.origional_integer_list = [int(item) for item in input]
         except:
             raise Exception(self.error_message['not_integers'])
+
+        if len(self.origional_integer_list) < 2:
+            raise Exception(self.error_message['not_enough_integer'])
 
         for i in range(1, len(self.origional_integer_list)):
             prev = self.origional_integer_list[i - 1]
