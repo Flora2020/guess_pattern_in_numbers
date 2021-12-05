@@ -23,8 +23,13 @@ class Find_pattern:
 
             if current < prev:
                 raise Exception(self.error_message['not_increasing'])
+
             self.difference.append(current - prev)
-            self.quotient_remainder_pairs.append(divmod(current, prev))
+
+            if prev == 0:
+                self.quotient_remainder_pairs.append(divmod(current, 1))
+            else:
+                self.quotient_remainder_pairs.append(divmod(current, prev))
 
     def generate_integers(self, generate_next_int: callable) -> None:
         prev_number = self.origional_integer_list[-1]
