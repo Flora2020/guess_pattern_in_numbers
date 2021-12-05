@@ -1,9 +1,13 @@
+from sys import maxsize
+
+
 class Find_pattern:
     def __init__(self) -> None:
         self.error_message = {
             'not_integers': 'Error, please enter integer only.',
             'not_enough_integer': 'Error, please enter at least two integers.',
-            'not_increasing': 'Error, please enter increasing sequence.'
+            'not_increasing': 'Error, please enter increasing sequence.',
+            'integer_too_big': f'Error, inerger should smaller than {maxsize: ,}'
         }
         self.origional_integer_list = []
         self.number_of_generated_integers = 10
@@ -20,6 +24,9 @@ class Find_pattern:
 
         if len(self.origional_integer_list) < 2:
             raise Exception(self.error_message['not_enough_integer'])
+
+        if self.origional_integer_list[0] >= maxsize:
+            raise Exception(self.error_message['integer_too_big'])
 
         for i in range(1, len(self.origional_integer_list)):
             prev = self.origional_integer_list[i - 1]
